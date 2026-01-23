@@ -61,6 +61,11 @@ start_date, end_date = st.sidebar.date_input(
     min_value=min_date,
     max_value=max_date
 )
+
+# Convert to Timestamps to match index type
+start_date = pd.Timestamp(start_date)
+end_date = pd.Timestamp(end_date)
+
 df = df.loc[start_date:end_date]
 
 # Prices series
@@ -235,3 +240,4 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
