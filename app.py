@@ -3,12 +3,23 @@ import pandas as pd
 import numpy as np
 
 st.set_page_config(
-    page_title="🧞‍♂️ Geenie — Core Risk + Monte Carlo",
+    page_title="🧞‍♂️ Geenie - Core Risk + Monte Carlo",
     layout="wide"
 )
 
-st.title("🧞‍♂️ Geenie — Core Risk Engine with Monte Carlo Projections")
-st.caption("Institutional-grade analytics and forward-looking scenario simulation")
+st.title("🧞‍♂️ Geenie - Core Risk Engine with Monte Carlo Projections")
+st.caption("Institutional-grade analytics and forward-looking scenario simulation by Jamshid Farook")
+
+# -----------------------------
+# How to Use Geenie (User Guide)
+# -----------------------------
+with open("how_to_use_geenie.pdf", "rb") as pdf_file:
+    st.download_button(
+        label="How to Use Geenie - Download User Guide (PDF)",
+        data=pdf_file,
+        file_name="Geenie_User_Guide.pdf",
+        mime="application/pdf",
+    )
 
 # -----------------------------
 # CSV Loader
@@ -105,7 +116,7 @@ stress_periods = drawdown[drawdown < -0.3]
 # -----------------------------
 # Display Metrics
 # -----------------------------
-st.subheader(f"📊 Asset Overview — {asset_name}")
+st.subheader(f"📊 Asset Overview - {asset_name}")
 c1, c2, c3, c4 = st.columns(4)
 c1.metric("Annualized Return", f"{annual_return*100:.2f}%")
 c2.metric("Annualized Volatility", f"{annual_volatility*100:.2f}%")
@@ -149,7 +160,7 @@ st.area_chart(drawdown)
 # -----------------------------
 # Monte Carlo Scenario Testing Explanation
 # -----------------------------
-st.subheader("🎲 Monte Carlo Scenario Testing — How to Read Charts")
+st.subheader("🎲 Monte Carlo Scenario Testing - How to Read Charts")
 st.markdown(
     """
 Each Monte Carlo chart shows **simulated future price paths** based on historical returns:
@@ -228,16 +239,31 @@ with st.expander("🔍 Raw Data Preview"):
     st.dataframe(df.tail(10))
 
 # -----------------------------
-# Footer / Copyright
+# Footer / About the Maker
 # -----------------------------
 st.markdown(
     """
     <hr>
-    <p style='text-align: center; color: gray;'>
-    🧞‍♂️ Geenie — Core Risk Engine & Monte Carlo Projections <br>
-    &copy; 2026 Jamshid Farook
-    </p>
+    <div style='text-align: center; color: gray; font-size: 14px;'>
+        <p><b>🧞‍♂️ Geenie - Core Risk Engine & Monte Carlo Projections</b></p>
+        <p>&copy; 2026 Jamshid Farook</p>
+        <br>
+        <p><b>About the Maker</b></p>
+        <p>
+        Jamshid Farook<br>
+        Data Analyst
+        </p>
+        <p style="max-width:600px; margin:auto;">
+        Detail-oriented Data Analyst with hands-on experience in Python, SQL, Excel,
+        and data visualization tools. IBM Data Analyst Certified with proven
+        experience in dashboards, real-world datasets, and actionable insights.
+        </p>
+        <p>
+        <a href="https://jamshidfarook.github.io/" target="_blank">Portfolio</a>
+        &nbsp;|&nbsp;
+        <a href="https://www.linkedin.com/in/jamshidfarook/" target="_blank">LinkedIn</a>
+        </p>
+    </div>
     """,
     unsafe_allow_html=True
 )
-
